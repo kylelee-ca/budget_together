@@ -1,25 +1,27 @@
-
 import { useState } from 'react'
-const Login = () => {
+import { useSelector, useDispatch } from 'react-redux'
+import {login, reset} from '../features/auth/authSlice'
 
+
+const Login = () => {
     const [formData, setFormData] = useState({
         id: '',
         password: ''
     })
-
     const { id, password } = formData
+    const dispatch = useDispatch()
+    const { user, isLoading, isSuccess, isError, message } = useSelector((state) => state.auth)
+    
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
-        // To add login functionality
+        dispatch(login(formData))
     }
 
     const onChange = (e) => {
         setFormData((prev) => ({
             ...prev,
             [e.target.name]: e.target.value
-    }))
-        
+        }))
     }
 
   return (

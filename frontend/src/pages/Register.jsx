@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { register } from '../features/auth/authSlice'
 const Register = () => {
     const [formData, setFormData] = useState({
         id: '',
@@ -8,11 +10,12 @@ const Register = () => {
         
     })
     const { id, name, password, password2 } = formData 
-
+    const { user, isLoading, isSuccess, isError, message } = useSelector(state => state.auth)
+    const dispatch = useDispatch()
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
-        // To add sign up functionality
+        dispatch(register(formData))
+        
     }
     
     const onChange = (e) => {
