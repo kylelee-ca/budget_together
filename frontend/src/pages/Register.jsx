@@ -3,13 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { register } from '../features/auth/authSlice'
 const Register = () => {
     const [formData, setFormData] = useState({
-        id: '',
+        userId: '',
         name: '',
         password: '',
         password2: ''
         
     })
-    const { id, name, password, password2 } = formData 
+    const { userId, name, password, password2 } = formData 
     const { user, isLoading, isSuccess, isError, message } = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const onSubmit = (e) => {
@@ -36,9 +36,9 @@ const Register = () => {
                     <input 
                         type="text" 
                         className="form-control" 
-                        id="id"
-                        name="id"
-                        value={id}
+                        id="userId"
+                        name="userId"
+                        value={userId}
                         placeholder="Enter your ID"
                         onChange={onChange}
                     />

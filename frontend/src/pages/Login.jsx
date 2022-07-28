@@ -5,10 +5,10 @@ import {login, reset} from '../features/auth/authSlice'
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        id: '',
+        userId: '',
         password: ''
     })
-    const { id, password } = formData
+    const { userId, password } = formData
     const dispatch = useDispatch()
     const { user, isLoading, isSuccess, isError, message } = useSelector((state) => state.auth)
     
@@ -36,9 +36,9 @@ const Login = () => {
                     <input 
                         type="text" 
                         className="form-control" 
-                        id="id"
-                        name="id"
-                        value={id}
+                        id="userId"
+                        name="userId"
+                        value={userId}
                         placeholder="Enter your ID"
                         onChange={onChange}
                     />
